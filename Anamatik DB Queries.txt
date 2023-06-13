@@ -1,0 +1,23 @@
+CREATE TABLE AIR_PIANO_USER_DETAILS(
+user_id int NOT NULL AUTO_INCREMENT,
+first_name varchar(255) NOT NULL,
+last_name varchar(255) NOT NULL,
+email varchar(100) NOT NULL UNIQUE,
+password varchar(255) NOT NULL,
+is_active varchar(10),
+record_created_by varchar(50),
+record_created_dt TIMESTAMP,
+PRIMARY KEY (user_id)
+);
+
+CREATE TABLE AIR_PIANO_SONG_DETAILS(
+note_id int NOT NULL AUTO_INCREMENT,
+user_id int NOT NULL,
+song_name varchar(50) NOT NULL,
+song_notes varchar(500),
+is_active varchar(10),
+record_created_by varchar(50),
+record_created_dt TIMESTAMP,
+PRIMARY KEY (note_id),
+FOREIGN KEY (user_id) REFERENCES AIR_PIANO_USER_DETAILS(user_id)
+);
